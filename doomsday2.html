@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Doomsday Clock</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    @font-face {
+      font-family: 'Cantique';
+      src: url('C:\Desktop\sawa sawa\fonts\cantique\Cantique-Normal.otf') format('otf'),
+           url('"C:\Desktop\sawa sawa\fonts\cantique\Cantique-Normal.otf"') format('otf');
+      /* Add more src lines for additional font file formats if needed */
+      /* Optionally, you can also specify font-weight and font-style */
+    }
+
+    body {
+      font-family: 'Cantique', Arial, sans-serif;
+    }
+    
+    #clock {
+      font-size: 80px;
+      color: #ff7462;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <h1 class="mt-5 text-center">Doomsday Clock</h1>
+        <div id="clock" class="mt-4 text-center">Loading...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateClock() {
+      var targetDate = new Date("January 1, 2024 00:00:00");
+      var currentDate = new Date();
+      var timeDiff = targetDate - currentDate;
+      var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+      days = String(days).padStart(2, '0');
+      hours = String(hours).padStart(2, '0');
+      minutes = String(minutes).padStart(2, '0');
+      seconds = String(seconds).padStart(2, '0');
+      document.getElementById("clock").textContent = days + "d " + hours + ":" + minutes + ":" + seconds;
+    }
+    
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
